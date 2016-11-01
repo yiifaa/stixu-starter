@@ -23,7 +23,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Account {
 	
 	@Id@Column(name="PK", length=40)
-	@GenericGenerator(name="system-uuid", strategy = "uuid")
+	@GenericGenerator(name="system-uuid", strategy = "org.hibernate.id.UUIDGenerator")
 	@GeneratedValue(generator="system-uuid")
 	private String id;
 	

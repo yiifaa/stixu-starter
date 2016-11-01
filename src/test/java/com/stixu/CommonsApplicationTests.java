@@ -26,13 +26,14 @@ public class CommonsApplicationTests {
 	public void contextLoads() {
 		assertThat(accountService, IsNull.notNullValue());
 		Account account = new Account();
-		account.setUsername("administrator");
+		account.setUsername("guest");
 		accountService.persist(account);
 	}
 	
+	//	@Ignore
 	@Test
 	public void testById() {
-		Account account = accountService.findById("8a488566581f0b3201581f0b37f10000");
+		Account account = accountService.findById("17e61b76-32a3-4c7f-8f11-7455e036cb91");
 		assertThat(account, IsNull.notNullValue());
 	}
 
