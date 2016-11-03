@@ -1,0 +1,7 @@
+/**
+ * 
+ */
+function Employee() {
+	
+}
+alert("hello");
