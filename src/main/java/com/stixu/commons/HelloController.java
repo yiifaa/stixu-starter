@@ -1,5 +1,7 @@
 package com.stixu.commons;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 
 import org.springframework.data.domain.Page;
@@ -37,4 +39,9 @@ public class HelloController {
 		return this.accountService.findAll(new PageRequest(0, 10));
 	}
 	
+	@GetMapping("/now")
+	@ResponseBody
+	public Date now() {
+		return new Date();
+	}
 }

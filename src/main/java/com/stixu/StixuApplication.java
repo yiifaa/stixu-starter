@@ -17,17 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 @Import(JpaConfiguration.class)
 @ImportResource(locations={"classpath:application-context.xml"})
 @ComponentScan(basePackages = "com.stixu",
-				includeFilters = {@Filter(Controller.class), @Filter(RestController.class)}
+				includeFilters = {@Filter(Controller.class), @Filter(RestController.class), @Filter(RestController.class)}
 )
-public class CommonsApplication extends SpringBootServletInitializer {
+public class StixuApplication extends SpringBootServletInitializer {
 	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(CommonsApplication.class);
+		return application.sources(StixuApplication.class);
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(CommonsApplication.class, args);
+		SpringApplication.run(StixuApplication.class, args);
 	}
 	
 }
