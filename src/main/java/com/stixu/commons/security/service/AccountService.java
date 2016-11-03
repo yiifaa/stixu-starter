@@ -6,10 +6,7 @@ package com.stixu.commons.security.service;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-
+import com.stixu.commons.persistence.GenericService;
 import com.stixu.commons.security.domain.Account;
 
 /**
@@ -18,16 +15,9 @@ import com.stixu.commons.security.domain.Account;
  * @since 1.0
  * 2016年11月1日 下午4:30:14
  */
-public interface AccountService {
+public interface AccountService extends GenericService<Account, String>{
 
 	Account findById(String id);
-
-	void persist(Account account);
-	
-	Iterable<Account> findAll(Sort sort);
-	
-	Page<Account> findAll(Pageable page);
-	
 	
 	List<Object[]> statByUsername();
 	

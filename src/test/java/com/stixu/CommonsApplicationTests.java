@@ -37,7 +37,7 @@ public class CommonsApplicationTests {
 		assertThat(accountService, IsNull.notNullValue());
 		Account account = new Account();
 		account.setUsername("guest");
-		accountService.persist(account);
+		accountService.save(account);
 	}
 	
 	//	@Ignore
@@ -45,6 +45,8 @@ public class CommonsApplicationTests {
 	public void testById() {
 		Account account = accountService.findById("17e61b76-32a3-4c7f-8f11-7455e036cb91");
 		assertThat(account, IsNull.notNullValue());
+		account.setUsername("王小明");
+		accountService.save(account);
 	}
 	
 	@Ignore
@@ -56,6 +58,7 @@ public class CommonsApplicationTests {
 		System.out.println(accountPage.getTotalPages());
 	}
 	
+	@Ignore
 	@Test
 	public void testStat() {
 		List<Object[]> result = accountService.statByUsername();

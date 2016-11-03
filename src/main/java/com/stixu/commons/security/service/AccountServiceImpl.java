@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.stixu.commons.persistence.GenericDao;
+import com.stixu.commons.persistence.impl.GenericServiceImpl;
 import com.stixu.commons.security.domain.Account;
 import com.stixu.commons.security.repository.AccountRepository;
 
@@ -23,7 +25,7 @@ import com.stixu.commons.security.repository.AccountRepository;
  * 2016年11月1日 下午4:30:37
  */
 @Service
-public class AccountServiceImpl implements AccountService {
+public class AccountServiceImpl extends GenericServiceImpl<Account, String> implements AccountService {
 
 	private AccountRepository accountDao;
 
@@ -31,11 +33,6 @@ public class AccountServiceImpl implements AccountService {
 	public AccountServiceImpl(AccountRepository accountDao) {
 		super();
 		this.accountDao = accountDao;
-	}
-	
-	@Override
-	public void persist(Account account) {
-		this.accountDao.save(account);
 	}
 	
 	@Override
@@ -73,5 +70,13 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public List<Account> findByUsername(String username) {
 		return accountDao.findByUsername(username);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.stixu.commons.persistence.impl.GenericServiceImpl#getDao()
+	 */
+	@Override
+	protected GenericDao<Account, String> getDao() {
+		return accountDao;
 	}
 }

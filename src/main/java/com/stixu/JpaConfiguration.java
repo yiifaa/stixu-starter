@@ -5,7 +5,11 @@
 package com.stixu;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ComponentScan.Filter;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.stixu.commons.security.domain.Account;
 
@@ -17,6 +21,9 @@ import com.stixu.commons.security.domain.Account;
  */
 @Configuration
 @EntityScan(basePackageClasses={Account.class})
+@ComponentScan(basePackages = "com.stixu",
+includeFilters = {@Filter(Repository.class), @Filter(Service.class)}
+)
 public class JpaConfiguration {
 
 }
