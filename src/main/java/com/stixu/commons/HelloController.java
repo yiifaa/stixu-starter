@@ -1,8 +1,9 @@
 package com.stixu.commons;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,8 +32,9 @@ public class HelloController {
 	}
 	
 	@GetMapping("/home")
-	public String home() {
-		return "default";
+	@ResponseBody
+	public Page<Account> home() {
+		return this.accountService.findAll(new PageRequest(0, 10));
 	}
 	
 }

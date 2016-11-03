@@ -4,6 +4,12 @@
  */
 package com.stixu.commons.security.service;
 
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+
 import com.stixu.commons.security.domain.Account;
 
 /**
@@ -17,5 +23,14 @@ public interface AccountService {
 	Account findById(String id);
 
 	void persist(Account account);
+	
+	Iterable<Account> findAll(Sort sort);
+	
+	Page<Account> findAll(Pageable page);
+	
+	
+	List<Object[]> statByUsername();
+	
+	List<Account> findByUsername(String username);
 
 }

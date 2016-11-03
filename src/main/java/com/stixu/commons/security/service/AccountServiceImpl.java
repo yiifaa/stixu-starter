@@ -4,8 +4,13 @@
  */
 package com.stixu.commons.security.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.stixu.commons.security.domain.Account;
@@ -35,6 +40,38 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Override
 	public Account findById(String id) {
-		return this.accountDao.findOne(id);
+		return this.accountDao.findById(id);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.stixu.commons.security.service.AccountService#findAll(org.springframework.data.domain.Sort)
+	 */
+	@Override
+	public Iterable<Account> findAll(Sort sort) {
+		return accountDao.findAll(sort);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.stixu.commons.security.service.AccountService#findAll(org.springframework.data.domain.Pageable)
+	 */
+	@Override
+	public Page<Account> findAll(Pageable page) {
+		return accountDao.findAll(page);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.stixu.commons.security.service.AccountService#statByUsername()
+	 */
+	@Override
+	public List<Object[]> statByUsername() {
+		return accountDao.statByUsername();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.stixu.commons.security.service.AccountService#findByUsername(java.lang.String)
+	 */
+	@Override
+	public List<Account> findByUsername(String username) {
+		return accountDao.findByUsername(username);
 	}
 }
